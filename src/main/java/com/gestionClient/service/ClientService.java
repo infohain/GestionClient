@@ -23,7 +23,7 @@ public class ClientService {
     }
 
     // Récupérer un client par son ID
-    public Optional<Client> getClientById(int id) {
+    public Optional<Client> getClientById(long id) {
         return clientRepository.findById((long) id);
     }
 
@@ -33,7 +33,7 @@ public class ClientService {
     }
 
     // Supprimer un client
-    public void deleteClient(int id) {
+    public void deleteClient(long id) {
         clientRepository.deleteById((long) id);
     }
 }
