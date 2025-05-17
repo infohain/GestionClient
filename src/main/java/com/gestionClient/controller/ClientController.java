@@ -29,14 +29,14 @@ public class ClientController {
 
     // Récupérer un client par ID
     @GetMapping("/{id}")
-    public ResponseEntity<Client> getClientById(@PathVariable int id) {
+    public ResponseEntity<Client> getClientById(@PathVariable long id) {
         Optional<Client> client = clientService.getClientById(id);
         return client.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     // Mettre à jour un client
     @PutMapping("/{id}")
-    public ResponseEntity<Client> updateClient(@PathVariable int id, @RequestBody Client clientDetails) {
+    public ResponseEntity<Client> updateClient(@PathVariable long id, @RequestBody Client clientDetails) {
         Optional<Client> client = clientService.getClientById(id);
         if (client.isPresent()) {
             clientDetails.setId(id);
@@ -49,7 +49,7 @@ public class ClientController {
 
     // Supprimer un client
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteClient(@PathVariable int id) {
+    public ResponseEntity<Void> deleteClient(@PathVariable long id) {
         Optional<Client> client = clientService.getClientById(id);
         if (client.isPresent()) {
             clientService.deleteClient(id);
